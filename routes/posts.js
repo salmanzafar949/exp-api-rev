@@ -56,4 +56,17 @@ router.put('/:postId', async (req, res) => {
     }
 })
 
+router.delete('/:postId', async (req, res) => {
+
+    try{
+        const post = await Post.remove({
+            _id: req.params.postId
+        })
+        res.status(200)
+        res.json(post)
+    }catch (e){
+        res.json(e)
+    }
+})
+
 module.exports = router;
