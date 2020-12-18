@@ -41,4 +41,19 @@ router.get('/:postId', async (req, res) => {
     }
 })
 
+router.put('/:postId', async (req, res) => {
+
+    try{
+        const updatedPost = await Post.updateOne({
+            _id: req.params.postId
+        },{
+            $set: req.body
+        })
+        res.status(200)
+        res.json(updatedPost)
+    }catch (e){
+        res.json(e)
+    }
+})
+
 module.exports = router;
