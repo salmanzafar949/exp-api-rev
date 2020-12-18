@@ -30,4 +30,15 @@ router.post('/', async (req, res) => {
         .catch(err => res.json(err))*/
 })
 
+router.get('/:postId', async (req, res) => {
+
+    try{
+        const post = await Post.findById(req.params.postId)
+        res.status(200)
+        res.json(post)
+    }catch (e){
+        res.json(e)
+    }
+})
+
 module.exports = router;
